@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIColor {
     
@@ -28,18 +29,46 @@ extension UIView {
     }
 }
 
-extension UIImageView {
+//let imageCache = NSCache<AnyObject, AnyObject>()
+
+class CustomImageView: UIImageView {
+    
+//    var imageUrlString: String?
     
     func loadImageUsingUrlString(urlString: String) {
-        guard let url = URL(string: urlString) else { return }
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            if error != nil {
-                print(error!)
-                return
-            }
-            DispatchQueue.main.async {
-                self.image = UIImage(data: data!)
-            }
-        }).resume()
+        let url = URL(string: urlString)
+        self.kf.indicatorType = .activity
+        self.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(1))], progressBlock: { (receive, total) in
+            print("url",receive,total)
+        }) { (image, error, cacheType, imageURL) in
+            print("image",image ?? 0)
+        }
+//        imageUrlString = urlString
+//        self.image = nil
+//
+//        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+//            self.image = imageFromCache
+//            print("imageFromCache",imageFromCache)
+//            return
+//        }
+//
+//
+//        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+//            if error != nil {
+//                print(error as Any)
+//                return
+//            }
+//
+//            DispatchQueue.main.async {
+//                let imageToCache = UIImage(data: data!)
+//                if self.imageUrlString == urlString {
+//                    print("imageToCache")
+//                    self.image = imageToCache
+//                }
+//
+//                imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+//
+//            }
+//        }).resume()
     }
 }

@@ -37,7 +37,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     self.videos?.append(video)
                     
                 }
-                self.collectionView?.reloadData()
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
+                }
+                
 
             case .failure(let error):
                 print(error)
@@ -49,7 +52,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         fetchVideos()
         
-        navigationItem.title = "Home"
+//        navigationItem.title = "Home"
         navigationController?.navigationBar.isTranslucent = false
         
         let titleLabel = UILabel(frame: CGRect(x: 0 , y: 0 , width: view.frame.width - 32, height: view.frame.height))
@@ -66,6 +69,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setupMenuBar()
         setupNavBarButtons()
     }
+    
     func setupNavBarButtons() {
         let searchImage = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
@@ -95,11 +99,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return videos?.count ?? 0
     }
-    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+    }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! VideoCell
         cell.video = videos?[indexPath.item]
-        
         return cell
     }
     

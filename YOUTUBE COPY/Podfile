@@ -8,4 +8,5 @@ target 'YOUTUBE COPY' do
   # Pods for YOUTUBE COPY
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'Kingfisher', '~> 4.3'
 end

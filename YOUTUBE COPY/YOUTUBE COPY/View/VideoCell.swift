@@ -30,7 +30,7 @@ class VideoCell: BaseCell {
             titleLabel.text = video?.title
             setupThumbnailImage()
             setupProfileImage()
-            thumbnailImageView.image = UIImage(named: (video?.thumbnailImageName)!)
+
           
             if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
                 
@@ -56,24 +56,24 @@ class VideoCell: BaseCell {
     }
     func setupThumbnailImage() {
         
-        if let thumbnailImageUrl = self.video?.thumbnailImageName {
+        if let thumbnailImageUrl = video?.thumbnailImageName {
             thumbnailImageView.loadImageUsingUrlString(urlString: thumbnailImageUrl)
         }
     }
     func setupProfileImage() {
-        if let profileImageUrl = self.video?.channel?.profileImageName {
+        if let profileImageUrl = video?.channel?.profileImageName {
             userProfileImageView.loadImageUsingUrlString(urlString: profileImageUrl)
         }
     }
-    let thumbnailImageView: UIImageView = {
-        let imgaeView = UIImageView()
+    let thumbnailImageView: CustomImageView = {
+        let imgaeView = CustomImageView()
         imgaeView.image = UIImage(named: "taylor_swift_blank_space")
         imgaeView.contentMode = .scaleAspectFill
         imgaeView.clipsToBounds = true
         return imgaeView
     }()
-    let userProfileImageView: UIImageView = {
-        let imageView = UIImageView()
+    let userProfileImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.image = UIImage(named: "taylor_swift_profile")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
