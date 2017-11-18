@@ -16,9 +16,11 @@
 		3F9939561FBEF9CB0055B524 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9939551FBEF9CB0055B524 /* MenuBar.swift */; };
 		3F9939581FBF41990055B524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F9939571FBF41990055B524 /* Assets.xcassets */; };
 		3F99395B1FBF43630055B524 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F99395A1FBF43630055B524 /* Video.swift */; };
+		48F2F5D6F7EE771E1D89AD8D /* Pods_YOUTUBE_COPY.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C94B11F7D2D6236995E2CFB /* Pods_YOUTUBE_COPY.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C94B11F7D2D6236995E2CFB /* Pods_YOUTUBE_COPY.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YOUTUBE_COPY.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6E51A21FBEBFD70047E329 /* YOUTUBE COPY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YOUTUBE COPY.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6E51A51FBEBFD70047E329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F6E51A71FBEBFD70047E329 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -30,6 +32,8 @@
 		3F9939551FBEF9CB0055B524 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		3F9939571FBF41990055B524 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F99395A1FBF43630055B524 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		BB1F2C1CC8B34CB0BFC8DD34 /* Pods-YOUTUBE COPY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YOUTUBE COPY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YOUTUBE COPY/Pods-YOUTUBE COPY.debug.xcconfig"; sourceTree = "<group>"; };
+		C9BF4B25D83D2CD167E2EB2A /* Pods-YOUTUBE COPY.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YOUTUBE COPY.release.xcconfig"; path = "Pods/Target Support Files/Pods-YOUTUBE COPY/Pods-YOUTUBE COPY.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +41,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F2F5D6F7EE771E1D89AD8D /* Pods_YOUTUBE_COPY.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E74F66008F24707EFB3AD0C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB1F2C1CC8B34CB0BFC8DD34 /* Pods-YOUTUBE COPY.debug.xcconfig */,
+				C9BF4B25D83D2CD167E2EB2A /* Pods-YOUTUBE COPY.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3F6E51991FBEBFD70047E329 = {
 			isa = PBXGroup;
 			children = (
 				3F6E51A41FBEBFD70047E329 /* YOUTUBE COPY */,
 				3F6E51A31FBEBFD70047E329 /* Products */,
+				3E74F66008F24707EFB3AD0C /* Pods */,
+				FDB686E9EAF6050DD9DE3C92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +132,14 @@
 			path = XCODEFILE;
 			sourceTree = "<group>";
 		};
+		FDB686E9EAF6050DD9DE3C92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C94B11F7D2D6236995E2CFB /* Pods_YOUTUBE_COPY.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,9 +147,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F6E51B41FBEBFD70047E329 /* Build configuration list for PBXNativeTarget "YOUTUBE COPY" */;
 			buildPhases = (
+				2AF505A7018D612286E3B511 /* [CP] Check Pods Manifest.lock */,
 				3F6E519E1FBEBFD70047E329 /* Sources */,
 				3F6E519F1FBEBFD70047E329 /* Frameworks */,
 				3F6E51A01FBEBFD70047E329 /* Resources */,
+				9E7302CB390C8C49A55585D1 /* [CP] Embed Pods Frameworks */,
+				84F0783B0F6B76C5BBEDBAA2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,6 +209,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2AF505A7018D612286E3B511 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YOUTUBE COPY-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84F0783B0F6B76C5BBEDBAA2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YOUTUBE COPY/Pods-YOUTUBE COPY-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E7302CB390C8C49A55585D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YOUTUBE COPY/Pods-YOUTUBE COPY-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YOUTUBE COPY/Pods-YOUTUBE COPY-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3F6E519E1FBEBFD70047E329 /* Sources */ = {
@@ -328,6 +411,7 @@
 		};
 		3F6E51B51FBEBFD70047E329 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB1F2C1CC8B34CB0BFC8DD34 /* Pods-YOUTUBE COPY.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -343,6 +427,7 @@
 		};
 		3F6E51B61FBEBFD70047E329 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9BF4B25D83D2CD167E2EB2A /* Pods-YOUTUBE COPY.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

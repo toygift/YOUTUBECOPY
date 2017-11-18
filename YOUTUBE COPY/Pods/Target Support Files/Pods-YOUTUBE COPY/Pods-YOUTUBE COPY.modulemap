@@ -1,0 +1,6 @@
+framework module Pods_YOUTUBE_COPY {
+  umbrella header "Pods-YOUTUBE COPY-umbrella.h"
+
+  export *
+  module * { export * }
+}

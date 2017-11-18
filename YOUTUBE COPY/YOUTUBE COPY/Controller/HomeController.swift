@@ -7,31 +7,47 @@
 //
 
 import UIKit
-
+import Alamofire
+import SwiftyJSON
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var videos: [Video] = {
-        var kanyeChannel = Channel()
-        kanyeChannel.name = "KanyeIsTheBestChannel"
-        kanyeChannel.profileImageName = "kanye_profile"
-        
-        var blankSpaceView = Video()
-        blankSpaceView.title = "Talyor Swift - Blank Space"
-        blankSpaceView.thumbnailImageName = "taylor_swift_blank_space"
-        blankSpaceView.channel = kanyeChannel
-        blankSpaceView.numberOfViews = 12312390123123123
-        
-        var badBloodVideo = Video()
-        badBloodVideo.title = "Talyor Swift - Bad Blood fraturing Kendrick Lamar"
-        badBloodVideo.thumbnailImageName = "taylor_swift_bad_blood"
-        badBloodVideo.channel = kanyeChannel
-        badBloodVideo.numberOfViews = 1230909801231231232
-        return [blankSpaceView, badBloodVideo]
-        
-    }()
+    var videos: [Video]?
     
+    func fetchVideos() {
+        let url = "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json"
+        let call = Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+        call.responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                self.videos = [Video]()
+                
+                for dictionary in json {
+                    
+                    let video = Video()
+                    video.title = dictionary.1["title"].stringValue
+                    video.thumbnailImageName = dictionary.1["thumbnail_image_name"].stringValue
+                    
+                    let channel = Channel()
+                    channel.name = dictionary.1["channel"]["name"].stringValue
+                    channel.profileImageName = dictionary.1["channel"]["profile_image_name"].stringValue
+                    video.channel = channel
+                    
+                    self.videos?.append(video)
+                    
+                }
+                self.collectionView?.reloadData()
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchVideos()
         
         navigationItem.title = "Home"
         navigationController?.navigationBar.isTranslucent = false
@@ -77,12 +93,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return videos.count
+        return videos?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! VideoCell
-        cell.video = videos[indexPath.item]
+        cell.video = videos?[indexPath.item]
         
         return cell
     }

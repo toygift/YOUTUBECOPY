@@ -28,10 +28,10 @@ class VideoCell: BaseCell {
     var video: Video? {
         didSet {
             titleLabel.text = video?.title
+            setupThumbnailImage()
+            setupProfileImage()
             thumbnailImageView.image = UIImage(named: (video?.thumbnailImageName)!)
-            if let profileImageName = video?.channel?.profileImageName {
-                userProfileImageView.image = UIImage(named: profileImageName)
-            }
+          
             if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
                 
                 let numberFormatter = NumberFormatter()
@@ -54,7 +54,17 @@ class VideoCell: BaseCell {
             
         }
     }
-    
+    func setupThumbnailImage() {
+        
+        if let thumbnailImageUrl = self.video?.thumbnailImageName {
+            thumbnailImageView.loadImageUsingUrlString(urlString: thumbnailImageUrl)
+        }
+    }
+    func setupProfileImage() {
+        if let profileImageUrl = self.video?.channel?.profileImageName {
+            userProfileImageView.loadImageUsingUrlString(urlString: profileImageUrl)
+        }
+    }
     let thumbnailImageView: UIImageView = {
         let imgaeView = UIImageView()
         imgaeView.image = UIImage(named: "taylor_swift_blank_space")
@@ -67,6 +77,7 @@ class VideoCell: BaseCell {
         imageView.image = UIImage(named: "taylor_swift_profile")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     let separatorView: UIView = {
