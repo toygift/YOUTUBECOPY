@@ -81,9 +81,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     @objc func handleSearch() {
         print(123)
     }
+    let settingLauncher = SettingLauncher()
+    
     @objc func handlemore() {
-        print(456)
+        settingLauncher.showSetting()
+    
+        
     }
+    
     let menuBar: MenuBar = {
         let mb = MenuBar()
         return mb
